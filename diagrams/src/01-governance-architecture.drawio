@@ -1,0 +1,163 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" compressed="false">
+  <diagram id="governance" name="Governance architecture">
+    <mxGraphModel dx="1800" dy="1200" grid="1" gridSize="10" page="1" pageWidth="1800" pageHeight="1200">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="Contract Review Assistant: Architecture" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#64748b;fontSize=15;strokeColor=none;fillColor=none;fontSize=25;" vertex="1" parent="1">
+          <mxGeometry x="270" y="15" width="1450" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="boundary" value="" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#64748b;fontSize=15;dashed=1;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="265" y="80" width="1480" height="970" as="geometry" />
+        </mxCell>
+        <mxCell id="trust" value="TRUST BOUNDARY (self-hosted: P1)" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#64748b;fontSize=15;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="680" y="90" width="650" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="user" value="User&#10;(browser/app)" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#f1f5f9;strokeColor=#64748b;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry x="20" y="155" width="180" height="105" as="geometry" />
+        </mxCell>
+        <mxCell id="gateway" value="API Gateway&#10;authN/authZ&#10;tenant_id from token&#10;ownership check | P5" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#fff2cc;strokeColor=#64748b;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry x="300" y="145" width="250" height="125" as="geometry" />
+        </mxCell>
+        <mxCell id="ingestion" value="INGESTION (async)" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#64748b;fontSize=15;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="650" y="140" width="1000" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="storage" value="Object Storage&#10;encrypted original&#10;tenant_id + contract_id" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#e1d5e7;strokeColor=#64748b;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry x="620" y="210" width="230" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="queue" value="Queue&#10;job per contract" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#dae8fc;strokeColor=#64748b;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry x="900" y="210" width="160" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="worker" value="Ingestion Worker&#10;text extract or local OCR&#10;Arabic normalize&#10;chunk by clause + metadata&#10;status ready/failed/needs_review" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#dae8fc;strokeColor=#64748b;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry x="1110" y="195" width="320" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="embedding" value="Embedding (local)&#10;same model for&#10;ingestion and query" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#dae8fc;strokeColor=#64748b;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry x="1480" y="210" width="230" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="es" value="Elasticsearch&#10;BM25 + vectors&#10;tenant_id + contract_id&#10;on every chunk | P5" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#e1d5e7;strokeColor=#64748b;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry x="1020" y="440" width="300" height="135" as="geometry" />
+        </mxCell>
+        <mxCell id="library" value="Clause Library&#10;reviewed template clauses&#10;no client text | P3" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#e1d5e7;strokeColor=#64748b;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry x="1420" y="440" width="290" height="135" as="geometry" />
+        </mxCell>
+        <mxCell id="querylane" value="QUERY (sync)" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#64748b;fontSize=15;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="630" y="630" width="1000" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="rewrite" value="Query Rewrite&#10;colloquial to legal terms" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#d5e8d4;strokeColor=#64748b;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry x="310" y="710" width="180" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="embedq" value="Embed Question&#10;same model" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#d5e8d4;strokeColor=#64748b;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry x="520" y="710" width="170" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="search" value="search_chunks()&#10;only function calling&#10;Elasticsearch&#10;tenant filter forced | P5" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#d5e8d4;strokeColor=#64748b;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry x="720" y="700" width="220" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="rerank" value="Reranker&#10;top 20 to top 5-8" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#d5e8d4;strokeColor=#64748b;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry x="970" y="710" width="170" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="llm" value="Local LLM&#10;chunks in delimiters&#10;citation + abstain rules&#10;P1" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#d5e8d4;strokeColor=#64748b;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry x="1170" y="700" width="230" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="verify" value="Verify&#10;every citation exists&#10;in retrieved chunks | P2" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#d5e8d4;strokeColor=#64748b;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry x="1440" y="710" width="270" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="response" value="Response: answer + clause/page citations&#10;P4: risky clauses shown as proposal for review&#10;with lawyer disclaimer" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#d5e8d4;strokeColor=#64748b;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry x="970" y="920" width="740" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="https" value="HTTPS: upload/question; answer + citations" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;labelBackgroundColor=#ffffff;startArrow=block;exitX=1.0;exitY=0.3333333333333333;exitPerimeter=0;entryX=0.0;entryY=0.36;entryPerimeter=0;" edge="1" parent="1" source="user" target="gateway">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="upload" value="upload (202 Accepted, status processing)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;labelBackgroundColor=#ffffff;exitX=1.0;exitY=0.8;exitPerimeter=0;entryX=0.0;entryY=0.2916666666666667;entryPerimeter=0;" edge="1" parent="1" source="gateway" target="storage">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;labelBackgroundColor=#ffffff;exitX=1.0;exitY=0.5;exitPerimeter=0;entryX=0.0;entryY=0.5;entryPerimeter=0;" edge="1" parent="1" source="storage" target="queue">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;labelBackgroundColor=#ffffff;exitX=1.0;exitY=0.5;exitPerimeter=0;entryX=0.0;entryY=0.46875;entryPerimeter=0;" edge="1" parent="1" source="queue" target="worker">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;labelBackgroundColor=#ffffff;exitX=1.0;exitY=0.46875;exitPerimeter=0;entryX=0.0;entryY=0.5;entryPerimeter=0;" edge="1" parent="1" source="worker" target="embedding">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="index" value="index" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1.0;exitPerimeter=0;entryX=0.5;entryY=0.0;entryPerimeter=0;" edge="1" parent="1" source="embedding" target="es">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1595" y="400" />
+              <mxPoint x="1170" y="400" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="question" value="question" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;labelBackgroundColor=#ffffff;exitX=0.4;exitY=1.0;exitPerimeter=0;entryX=0.5;entryY=0.0;entryPerimeter=0;" edge="1" parent="1" source="gateway" target="rewrite">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="q1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;labelBackgroundColor=#ffffff;exitX=1.0;exitY=0.5;exitPerimeter=0;entryX=0.0;entryY=0.5;entryPerimeter=0;" edge="1" parent="1" source="rewrite" target="embedq">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="q2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;labelBackgroundColor=#ffffff;exitX=1.0;exitY=0.5;exitPerimeter=0;entryX=0.0;entryY=0.5;entryPerimeter=0;" edge="1" parent="1" source="embedq" target="search">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="q3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;labelBackgroundColor=#ffffff;exitX=1.0;exitY=0.5;exitPerimeter=0;entryX=0.0;entryY=0.5;entryPerimeter=0;" edge="1" parent="1" source="search" target="rerank">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="q4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;labelBackgroundColor=#ffffff;exitX=1.0;exitY=0.5;exitPerimeter=0;entryX=0.0;entryY=0.5;entryPerimeter=0;" edge="1" parent="1" source="rerank" target="llm">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="q5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;labelBackgroundColor=#ffffff;exitX=1.0;exitY=0.5;exitPerimeter=0;entryX=0.0;entryY=0.5;entryPerimeter=0;" edge="1" parent="1" source="llm" target="verify">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hybrid" value="hybrid query" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;labelBackgroundColor=#ffffff;startArrow=block;exitX=0.5;exitY=0.0;exitPerimeter=0;entryX=0.0;entryY=0.5185185185185185;entryPerimeter=0;" edge="1" parent="1" source="search" target="es">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="830" y="510" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lookup" value="risky clause: library lookup" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;labelBackgroundColor=#ffffff;exitX=0.5;exitY=0.0;exitPerimeter=0;entryX=0.5344827586206896;entryY=1.0;entryPerimeter=0;" edge="1" parent="1" source="verify" target="library">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="result" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;labelBackgroundColor=#ffffff;exitX=0.7777777777777778;exitY=1.0;exitPerimeter=0;entryX=0.918918918918919;entryY=0.0;entryPerimeter=0;" edge="1" parent="1" source="verify" target="response">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="return" value="answer + citations" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;labelBackgroundColor=#ffffff;exitX=0.0;exitY=0.5;exitPerimeter=0;entryX=0.88;entryY=1.0;entryPerimeter=0;" edge="1" parent="1" source="response" target="gateway">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="580" y="970" />
+              <mxPoint x="580" y="410" />
+              <mxPoint x="520" y="410" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="legend" value="P1 Confidential and untrusted | P2 Grounded or silent | P3 Clause Library only&#10;P4 Human oversight | P5 Least privilege" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#64748b;fontSize=15;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="280" y="1080" width="1450" height="80" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
