@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mxfile host="app.diagrams.net">
+  <diagram id="session-2-usecase-flow" name="Use-case flow">
+    <mxGraphModel dx="1800" dy="1400" grid="1" gridSize="10" page="1" pageWidth="1800" pageHeight="1400">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="background-band" value="BACKGROUND PATH (async ingestion + batch, nobody is waiting)" style="rounded=0;fillColor=#eef5fc;strokeColor=none;verticalAlign=top;align=left;spacing=14;fontStyle=1;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="15" y="150" width="1590" height="570" as="geometry" />
+        </mxCell>
+        <mxCell id="realtime-band" value="REAL-TIME PATH (user is waiting, P95 target 800 ms)" style="rounded=0;fillColor=#eef8ee;strokeColor=none;verticalAlign=top;align=left;spacing=14;fontStyle=1;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="15" y="740" width="1590" height="410" as="geometry" />
+        </mxCell>
+        <mxCell id="title" value="Use case: risky-clause recommendation (sequence view)" style="text;html=0;strokeColor=none;fillColor=none;align=center;fontSize=24;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="15" y="10" width="1590" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="header-0" value="User / Channel" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#eeeeee;strokeColor=#777777;fontSize=13;align=center;verticalAlign=middle;" parent="1" vertex="1">
+          <mxGeometry x="25" y="60" width="190" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="lifeline-0" value="" style="dashed=1;strokeColor=#999999;endArrow=none;startArrow=none;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="120" y="120" as="sourcePoint" />
+            <mxPoint x="120" y="1180" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="header-1" value="API Gateway" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#fff2cc;strokeColor=#777777;fontSize=13;align=center;verticalAlign=middle;" parent="1" vertex="1">
+          <mxGeometry x="255" y="60" width="190" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="lifeline-1" value="" style="dashed=1;strokeColor=#999999;endArrow=none;startArrow=none;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="350" y="120" as="sourcePoint" />
+            <mxPoint x="350" y="1180" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="header-2" value="Contract Service + operational DB" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#dae8fc;strokeColor=#777777;fontSize=13;align=center;verticalAlign=middle;" parent="1" vertex="1">
+          <mxGeometry x="485" y="60" width="190" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="lifeline-2" value="" style="dashed=1;strokeColor=#999999;endArrow=none;startArrow=none;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="580" y="120" as="sourcePoint" />
+            <mxPoint x="580" y="1180" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="header-3" value="Queue + Ingestion Worker&#xA;stands in for CDC &gt; Kafka &gt; Flink" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#dae8fc;strokeColor=#777777;fontSize=13;align=center;verticalAlign=middle;" parent="1" vertex="1">
+          <mxGeometry x="715" y="60" width="190" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="lifeline-3" value="" style="dashed=1;strokeColor=#999999;endArrow=none;startArrow=none;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="810" y="120" as="sourcePoint" />
+            <mxPoint x="810" y="1180" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="header-4" value="Recommendation Engine&#xA;risk score + Clause Library lookup" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#d5e8d4;strokeColor=#777777;fontSize=13;align=center;verticalAlign=middle;" parent="1" vertex="1">
+          <mxGeometry x="945" y="60" width="190" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="lifeline-4" value="" style="dashed=1;strokeColor=#999999;endArrow=none;startArrow=none;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1040" y="120" as="sourcePoint" />
+            <mxPoint x="1040" y="1180" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="header-5" value="Elasticsearch&#xA;feature store + vector DB" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#e1d5e7;strokeColor=#777777;fontSize=13;align=center;verticalAlign=middle;" parent="1" vertex="1">
+          <mxGeometry x="1175" y="60" width="190" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="lifeline-5" value="" style="dashed=1;strokeColor=#999999;endArrow=none;startArrow=none;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1270" y="120" as="sourcePoint" />
+            <mxPoint x="1270" y="1180" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="header-6" value="Airflow&#xA;batch jobs" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#eeeeee;strokeColor=#777777;fontSize=13;align=center;verticalAlign=middle;" parent="1" vertex="1">
+          <mxGeometry x="1405" y="60" width="190" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="lifeline-6" value="" style="dashed=1;strokeColor=#999999;endArrow=none;startArrow=none;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1500" y="120" as="sourcePoint" />
+            <mxPoint x="1500" y="1180" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="B1" value="B1 upload contract (HTTPS)" style="endArrow=block;endFill=1;strokeWidth=1.5;fontSize=12;labelBackgroundColor=#eef5fc;strokeColor=#333333;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="120" y="210" as="sourcePoint" />
+            <mxPoint x="350" y="210" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="B2" value="B2 authN + tenant_id from token" style="endArrow=block;endFill=1;strokeWidth=1.5;fontSize=12;labelBackgroundColor=#eef5fc;strokeColor=#333333;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="350" y="260" as="sourcePoint" />
+            <mxPoint x="580" y="260" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="B3" value="B3 save file, status = processing, enqueue" style="endArrow=block;endFill=1;strokeWidth=1.5;fontSize=12;labelBackgroundColor=#eef5fc;strokeColor=#333333;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="580" y="310" as="sourcePoint" />
+            <mxPoint x="810" y="310" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="B4" value="B4 chunk by clause, embed, index (with tenant_id)" style="endArrow=block;endFill=1;strokeWidth=1.5;fontSize=12;labelBackgroundColor=#eef5fc;strokeColor=#333333;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="810" y="360" as="sourcePoint" />
+            <mxPoint x="1270" y="360" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="B5" value="B5 classify + score (both parties)" style="endArrow=block;endFill=1;strokeWidth=1.5;fontSize=12;labelBackgroundColor=#eef5fc;strokeColor=#333333;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="810" y="410" as="sourcePoint" />
+            <mxPoint x="1040" y="410" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="B6" value="B6 library lookup, write top-K per clause x party" style="endArrow=block;endFill=1;strokeWidth=1.5;fontSize=12;labelBackgroundColor=#eef5fc;strokeColor=#333333;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1040" y="460" as="sourcePoint" />
+            <mxPoint x="1270" y="460" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="B7" value="B7 status = ready" style="endArrow=block;endFill=1;strokeWidth=1.5;fontSize=12;labelBackgroundColor=#eef5fc;strokeColor=#333333;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="810" y="510" as="sourcePoint" />
+            <mxPoint x="580" y="510" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="B8" value="B8 nightly: Clause Library changed, list affected contracts" style="endArrow=block;endFill=1;strokeWidth=1.5;fontSize=12;labelBackgroundColor=#eef5fc;strokeColor=#333333;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1500" y="560" as="sourcePoint" />
+            <mxPoint x="580" y="560" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="B9" value="B9 recompute recs (same write as B6)" style="endArrow=block;endFill=1;strokeWidth=1.5;fontSize=12;labelBackgroundColor=#eef5fc;strokeColor=#333333;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1500" y="610" as="sourcePoint" />
+            <mxPoint x="1040" y="610" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="R1" value="R1 open contract / clause view" style="endArrow=block;endFill=1;strokeWidth=1.5;strokeColor=#245b30;fontColor=#245b30;fontSize=12;labelBackgroundColor=#eef8ee;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="120" y="800" as="sourcePoint" />
+            <mxPoint x="350" y="800" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="R2" value="R2 authN/authZ + tenant_id (~50 ms)" style="endArrow=block;endFill=1;strokeWidth=1.5;strokeColor=#245b30;fontColor=#245b30;fontSize=12;labelBackgroundColor=#eef8ee;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="350" y="855" as="sourcePoint" />
+            <mxPoint x="580" y="855" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="R3" value="R3 ownership check, op DB (~30 ms)" style="rounded=1;whiteSpace=wrap;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" parent="1" vertex="1">
+          <mxGeometry x="460" y="893" width="240" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="R4" value="R4 read precomputed recs: tenant + contract + clause + party (~100 ms)" style="endArrow=block;endFill=1;strokeWidth=1.5;strokeColor=#245b30;fontColor=#245b30;fontSize=12;labelBackgroundColor=#eef8ee;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="580" y="965" as="sourcePoint" />
+            <mxPoint x="1270" y="965" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="R5" value="R5 top-K alternatives + source_clause_id" style="endArrow=block;endFill=1;strokeWidth=1.5;strokeColor=#245b30;fontColor=#245b30;fontSize=12;labelBackgroundColor=#eef8ee;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1270" y="1020" as="sourcePoint" />
+            <mxPoint x="580" y="1020" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="R6" value="R6 proposal for review + disclaimer (~50 ms)" style="endArrow=block;endFill=1;strokeWidth=1.5;strokeColor=#245b30;fontColor=#245b30;fontSize=12;labelBackgroundColor=#eef8ee;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="580" y="1075" as="sourcePoint" />
+            <mxPoint x="350" y="1075" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="R7" value="R7 response (network + UI ~200 ms)" style="endArrow=block;endFill=1;strokeWidth=1.5;strokeColor=#245b30;fontColor=#245b30;fontSize=12;labelBackgroundColor=#eef8ee;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="350" y="1130" as="sourcePoint" />
+            <mxPoint x="120" y="1130" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fallback" value="fallback: miss or stale, compute live (async, loading state)" style="dashed=1;endArrow=block;endFill=1;strokeWidth=1.5;strokeColor=#d68910;fontColor=#b46b00;fontSize=12;labelBackgroundColor=#eef8ee;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="580" y="1140" as="sourcePoint" />
+            <mxPoint x="1040" y="1140" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="latency-budget" value="Latency budget, real-time path (assumed targets, to be measured)&#xA;&#xA;Gateway + auth 50 ms | ownership check 30 ms | Elasticsearch read 100 ms&#xA;assemble + disclaimer 50 ms | network + UI 200 ms&#xA;Total 430 ms against a P95 target of 800 ms, so 370 ms of headroom." style="rounded=1;whiteSpace=wrap;fillColor=#f5f5f5;strokeColor=#999999;align=left;spacing=12;fontSize=13;" parent="1" vertex="1">
+          <mxGeometry x="25" y="1200" width="770" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="over-engineering" value="Over-engineering check&#xA;&#xA;Not needed: CDC &gt; Kafka &gt; Flink (an upload is an explicit event, a queue is enough), CDP (no behavior profile), WhatsApp (optional ping only).&#xA;Missing from the high-level view: Object Storage, local OCR / LLM / reranker serving." style="rounded=1;whiteSpace=wrap;fillColor=#f5f5f5;strokeColor=#999999;align=left;spacing=12;fontSize=13;" parent="1" vertex="1">
+          <mxGeometry x="815" y="1200" width="770" height="120" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
