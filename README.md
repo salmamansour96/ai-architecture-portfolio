@@ -20,3 +20,10 @@ Coursework and capstone for the AI Architecture Design course. The system used t
 | ADR 0002 | [OCR provider](adr/0002-ocr-provider.md) |
 | ADR 0003 | [Search layer](adr/0003-search-layer.md) |
 | Guardrail | [CI guardrail checks](guardrails/check_guardrails.py) |
+
+### Session 2 - Use-case flow assignment
+
+| Deliverable | File |
+| --- | --- |
+| Use-case flow document | [Session 2 use-case flow](docs/02-usecase-flow.md) |
+| Sequence diagram | [Risky-clause recommendation sequence diagram](diagrams/src/02-usecase-flow.drawio) |
